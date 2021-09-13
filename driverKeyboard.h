@@ -152,7 +152,6 @@ const char *shift_caps_char_map[] = {
             {
                 posBuffer = 0;
                 lenBuffer = 0;
-                buffer[0] = (char) ' ';
                 return 2;
             }
             return 0;
