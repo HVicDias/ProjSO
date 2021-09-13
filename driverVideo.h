@@ -81,6 +81,8 @@ void terminal_write(const char* data, size_t size)
 {
 	for (size_t i = 0; i < size; i++)
 		terminal_putchar(data[i]);
+	terminal_row = (size_t) 0;
+
 }
 
 void terminal_writestring(const char* data)
@@ -93,7 +95,7 @@ void terminal_control(int control, const char* data, size_t size)
 	if(control == 1){
 		terminal_write(data, size);
 	}else if(control == 2){
-		terminal_column++;
+		terminal_row++;
 	}
 }
 
