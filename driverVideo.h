@@ -96,8 +96,7 @@ void terminal_control(int control, const char* data, size_t size)
 		terminal_write(data, size);
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
-		
-		for (size_t i = 0; i < size; i++)
+		/*for (size_t i = 0; i < size; i++)
 		{
 			if(data[i] != ' '){
 				comando[i] = data[i];
@@ -106,7 +105,7 @@ void terminal_control(int control, const char* data, size_t size)
 			else break;
 		}
 
-		terminal_write(comando,comandoLen);
+		terminal_write(comando,comandoLen);*/
 		terminal_row++;
 	}
 }
