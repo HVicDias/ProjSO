@@ -97,17 +97,9 @@ void terminal_control(int control, const char* data, size_t size)
 		terminal_write(data, size);
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
-		for (i = 0; i < size; i++)
-		{
-			terminal_write(data, size);
-			if(data[i] != ' '){
-				terminal_write(data, size);
-				comando[i] = data[i];
-				comandoLen++; 
-			}
-			else break;
+		for (size_t i = 0; i < size; i++){
+			terminal_putchar(data[++i]);
 		}
-
 		
 
 		/*while (i==' ' && i<size)
@@ -115,8 +107,6 @@ void terminal_control(int control, const char* data, size_t size)
 
 		}*/
 		
-		if(comando == "teste1")
-			terminal_row++;
 		
 		terminal_row++;
 		terminal_write(comando,comandoLen);
