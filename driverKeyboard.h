@@ -154,7 +154,7 @@ const char *shift_caps_char_map[] = {
                     posBuffer++;
                 }
                 return 1;
-            }else if(novaLetra ==  "<BACK>")
+            }else if(novaLetra ==  (char*) "<BACK>")
             {
                 if(posBuffer == lenBuffer){
                     buffer[posBuffer] = ' ';
