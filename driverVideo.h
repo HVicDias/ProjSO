@@ -91,12 +91,12 @@ void terminal_writestring(const char* data)
 void terminal_control(int control, const char* data, size_t size)
 {
 	char comando[20], codigo[20],
-	int comandoLen = 0, codLen = 0, i; 
+	int comandoLen = 0, codLen = 0; 
 	if(control == 1){
 		terminal_write(data, size);
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
-		for (i = 0; i < size; i++)
+		for (site_t i = 0; i < size; i++)
 		{
 			if(data[i] != ' '){
 				comando[i] = data[i];
