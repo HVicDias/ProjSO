@@ -90,7 +90,7 @@ void terminal_writestring(const char* data)
 
 void terminal_control(int control, const char* data, size_t size)
 {
-	char *comando, codigo[20];
+	char comando[20], codigo[20];
 	int comandoLen, codLen = 0, i; 
 	if(control == 1){
 		terminal_write(data, size);
@@ -99,6 +99,7 @@ void terminal_control(int control, const char* data, size_t size)
 		for (i = 0; i < size; i++)
 		{
 			if(data[i] != ' '){
+				terminal_write(data, size);
 				comando[i] = data[i];
 				comandoLen++; 
 			}
