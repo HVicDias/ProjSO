@@ -159,10 +159,17 @@ const char *shift_caps_char_map[] = {
                 if(posBuffer == lenBuffer){
                     buffer[posBuffer] = ' ';
                     posBuffer--;
-                }else{
+                }else if(buffer[lenBuffer + 1] == ' '){
                     for (size_t i = posBuffer; i < (size_t)lenBuffer; i++)
                     {
                         buffer[i] = buffer[i+1];
+                    }
+                    buffer[lenBuffer] = ' ';
+                    posBuffer--;
+                }else{
+                     for (size_t i = posBuffer; i < (size_t)lenBuffer; i++)
+                    {
+                        buffer[i] = ' ';
                     }
                     buffer[lenBuffer] = ' ';
                     posBuffer--;
