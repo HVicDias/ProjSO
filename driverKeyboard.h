@@ -141,7 +141,7 @@ const char *shift_caps_char_map[] = {
             size_t um = strlen("A");
             if(tam == 1){
                 if(posBuffer == lenBuffer){
-                    buffer[posBuffer] = (char) novaLetra;
+                    buffer[posBuffer] = novaLetra[0];
                     posBuffer++;
                     lenBuffer++;
                 }else{
