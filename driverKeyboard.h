@@ -149,7 +149,7 @@ const char *shift_caps_char_map[] = {
                     {
                         buffer[i+1] = buffer[i];
                     }
-                    buffer[posBuffer] = novaLetra;
+                    buffer[posBuffer] = novaLetra[0];
                     lenBuffer++;
                     posBuffer++;
                 }
@@ -157,7 +157,7 @@ const char *shift_caps_char_map[] = {
             }else if(novaLetra ==  "<BACK>")
             {
                 if(posBuffer == lenBuffer){
-                    buffer[posBuffer] = "";
+                    buffer[posBuffer] = ' ';
                     posBuffer--;
                     lenBuffer--;
                 }else{
@@ -165,7 +165,7 @@ const char *shift_caps_char_map[] = {
                     {
                         buffer[i] = buffer[i+1];
                     }
-                    buffer[lenBuffer] = "";
+                    buffer[lenBuffer] = ' ';
                     lenBuffer--;
                     posBuffer--;
                 }
