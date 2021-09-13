@@ -16,7 +16,7 @@ extern "C" void kernel_main(void)
     while(1){
         if(inb(0x64)&1){  //identifica alteracao
             value = inb(0x60); //le o codigo do buffer
-            terminal_writestring(keyboard.defineChar(value));
+            terminal_control(keyboard.attBuffer(value),keyboard.buffer, keyboard.lenBuffer);
         }
     }
 }
