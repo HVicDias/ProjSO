@@ -11,13 +11,14 @@ extern "C" void kernel_main(void)
     /* Initialize terminal interface */
     Keyboard keyboard;
     terminal_initialize();
-    int value;
+    int value, cod;
 
     while(1){
         if (inb(0x64)&1)
         {
             value = inb(0x60); //le o codigo do buffer
-            terminal_control(keyboard.attBuffer(value),keyboard.buffer, keyboard.lenBuffer);
+            int cod = keyboard.attBuffer(value);
+            terminal_control(cod,keyboard.buffer, keyboard.lenBuffer);
         }
     }
 }
