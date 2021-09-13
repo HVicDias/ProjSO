@@ -173,6 +173,9 @@ const char *shift_caps_char_map[] = {
             }
             else if (novaLetra ==  "<ENTER>")
             {
+                lenBuffer = 0;
+                posBuffer = 0;
+                buffer[0] = ' ';
                 return 2;
             }
             return 0;
