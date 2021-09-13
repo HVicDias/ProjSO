@@ -101,7 +101,7 @@ const char *shift_caps_char_map[] = {
             caps = false;
             posBuffer = 0;
             lenBuffer = 0;
-            buffer[0] = (char) "";
+            buffer = (char*) "";
         }
 
         const char* defineChar(int numero){
