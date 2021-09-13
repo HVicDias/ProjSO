@@ -96,6 +96,15 @@ void terminal_writestring(const char* data)
 	terminal_write(data, strlen(data));
 }
 
+void terminal_control(int control, const char* data, size_t size)
+{
+	if(control == 1){
+		terminal_write(data, size);
+	}else if(control == 2){
+		terminal_column++;
+	}
+}
+
 uint8_t inb(uint16_t port) {
     uint8_t ret;
     asm volatile("inb %1, %0" : "=a"(ret) : "Nd"(port));

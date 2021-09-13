@@ -10,6 +10,7 @@ extern "C" void kernel_main(void)
     ///Shift numbers 0x2A (42) and 0x36(54) caps number 0x3A(58)
     /* Initialize terminal interface */
     Keyboard keyboard;
+    keyboard.initialize();
     terminal_initialize();
     int value;
 
