@@ -97,8 +97,9 @@ void terminal_control(int control, const char* data, size_t size)
 		terminal_write(data, size);
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
+		terminal_row = 2;
 		for (size_t i = 0; i < size; i++){
-			terminal_putchar(data[++i]);
+			terminal_putchar(data[i]);
 		}
 		
 
