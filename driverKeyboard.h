@@ -181,7 +181,7 @@ class Keyboard
         }
 
     public:
-        const char *buffer[80];
+        const char buffer[80];
         bool shift, caps;
         int posBuffer, lenBuffer;
 };
