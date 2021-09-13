@@ -138,7 +138,6 @@ const char *shift_caps_char_map[] = {
         size_t attBuffer(int numero){
             char* novaLetra = (char*) defineChar(numero);
             size_t tam = strlen(novaLetra);
-            size_t um = strlen("A");
             if(tam == 1){
                 buffer[posBuffer] = novaLetra[0];
                 posBuffer++;
@@ -146,7 +145,8 @@ const char *shift_caps_char_map[] = {
                 return 1;
             }else if(novaLetra ==  (char*) "<BACK>")
             {
-                posBuffer--;
+                if(posBuffer == lenBuffer)
+                    posBuffer--;
                 buffer[posBuffer] = ' ';
                 posBuffer--;
                 return 1;
