@@ -90,8 +90,8 @@ void terminal_writestring(const char* data)
 
 void terminal_control(int control, const char* data, size_t size)
 {
-	char comando[20], codigo[20],
-	int comandoLen = 0, codLen = 0; 
+	char comando[20], codigo[20];
+	int comandoLen, codLen = 0; 
 	if(control == 1){
 		terminal_write(data, size);
 		terminal_column = (size_t) 0;
