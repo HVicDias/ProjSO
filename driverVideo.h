@@ -103,11 +103,10 @@ void terminal_control(int control, const char* data, size_t size)
 				comando[i] == data[i];
 			}else break;
 		}
-		
+		terminal_write(comando, comandoLen);
 		if(comando == "teste1"){
 			terminal_row++;
 		}
-
 		/*while (i==' ' && i<size)
 		{
 
