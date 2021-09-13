@@ -140,40 +140,15 @@ const char *shift_caps_char_map[] = {
             size_t tam = strlen(novaLetra);
             size_t um = strlen("A");
             if(tam == 1){
-                if(posBuffer == lenBuffer){
-                    buffer[posBuffer] = novaLetra[0];
-                    posBuffer++;
-                    lenBuffer++;
-                }else{
-                    for (size_t i = posBuffer; i < lenBuffer+um; i++)
-                    {
-                        buffer[i+1] = buffer[i];
-                    }
-                    buffer[posBuffer] = novaLetra[0];
-                    lenBuffer++;
-                    posBuffer++;
-                }
+                buffer[posBuffer] = novaLetra[0];
+                posBuffer++;
+                lenBuffer++;
+
                 return 1;
             }else if(novaLetra ==  (char*) "<BACK>")
             {
-                if(posBuffer == lenBuffer){
-                    buffer[posBuffer] = ' ';
-                    posBuffer--;
-                }else if(buffer[lenBuffer + 1] == ' '){
-                    for (size_t i = posBuffer; i < (size_t)lenBuffer; i++)
-                    {
-                        buffer[i] = buffer[i+1];
-                    }
-                    buffer[lenBuffer] = ' ';
-                    posBuffer--;
-                }else{
-                     for (size_t i = posBuffer; i < (size_t)lenBuffer; i++)
-                    {
-                        buffer[i] = ' ';
-                    }
-                    buffer[lenBuffer] = ' ';
-                    posBuffer--;
-                }
+                buffer[posBuffer] = ' ';
+                posBuffer--;
                 return 1;
             }
             else if (novaLetra ==  (char*) "<ENTER>")
