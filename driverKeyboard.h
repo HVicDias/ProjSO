@@ -136,7 +136,7 @@ const char *shift_caps_char_map[] = {
         }
 
         size_t attBuffer(int numero){
-            const char* novaLetra = defineChar(numero);
+            char* novaLetra = defineChar(numero);
             size_t tam = strlen(novaLetra);
             if(tam == 1){
                 if(posBuffer == lenBuffer){
