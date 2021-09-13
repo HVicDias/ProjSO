@@ -14,7 +14,7 @@ extern "C" void kernel_main(void)
     int value, cod;
 
     while(1){
-        int cod = keyboard.attBuffer(value);
+        int cod = keyboard.attBuffer();
         terminal_control(cod,keyboard.buffer, keyboard.lenBuffer);
     }
 
