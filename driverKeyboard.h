@@ -136,21 +136,26 @@ const char *shift_caps_char_map[] = {
         }
 
         size_t attBuffer(int numero){
-            char* novaLetra = (char*) defineChar(numero);
-            size_t tam = strlen(novaLetra);
-            if(tam == 1){
-                buffer[posBuffer] = novaLetra[0];
-                posBuffer++;
-                lenBuffer++;
-                return 1;
-            }else if(novaLetra ==  (char*) "<BACK>" && posBuffer > 0)
-            {
-                buffer[--posBuffer] = ' ';
-                return 1;
-            }
-            else if (novaLetra ==  (char*) "<ENTER>")
-            {
-                return 2;
+            if (inb(0x64)&1){
+                value = inb(0x60); //le o codigo do buffer
+                char* novaLetra = (char*) defineChar(numero);
+                size_t tam = strlen(novaLetra);
+                if(tam == 1){
+                    buffer[posBuffer] = novaLetra[0];
+                    posBuffer++;
+                    lenBuffer++;
+                    return 1;
+                }else if(novaLetra ==  (char*) "<BACK>" && posBuffer > 0)
+                {
+                    buffer[--posBuffer] = ' ';
+                    return 1;
+                }
+                else if (novaLetra ==  (char*) "<ENTER>")
+                {
+                    keyboard.lenBuffer = 0;
+                    keyboard.posBuffer = 0;
+                    return 2;
+                }
             }
             return 0;
         }

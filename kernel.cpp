@@ -14,15 +14,10 @@ extern "C" void kernel_main(void)
     int value, cod;
 
     while(1){
-        if (inb(0x64)&1)
-        {
-            value = inb(0x60); //le o codigo do buffer
-            int cod = keyboard.attBuffer(value);
-            terminal_control(cod,keyboard.buffer, keyboard.lenBuffer);
-            if(cod == 2){
-                keyboard.lenBuffer = 0;
-                keyboard.posBuffer = 0;
-            }
-        }
+        int cod = keyboard.attBuffer(value);
+        terminal_control(cod,keyboard.buffer, keyboard.lenBuffer);
     }
+
+    //func write
+    //func read
 }
