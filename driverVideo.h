@@ -92,16 +92,15 @@ void terminal_control(int control, const char* data, size_t size)
 {
 	char comando[20], codigo[20];
 	int comandoLen, codLen = 0;
-	size_t i; 
 	if(control == 1){
 		terminal_write(data, size);
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
-		terminal_row = 2;
-		terminal_putchar('A');
-		terminal_row++;
+		
 		for (size_t i = 0; i < size; i++){
-			terminal_putchar(data[i]);
+			terminal_row = 2;
+			terminal_putchar('A');
+			terminal_row++;
 		}
 		
 
