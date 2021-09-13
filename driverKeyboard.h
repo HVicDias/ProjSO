@@ -101,7 +101,7 @@ const char *shift_caps_char_map[] = {
             caps = false;
             posBuffer = 0;
             lenBuffer = 0;
-            buffer[0] = "";
+            buffer[0] = (char*) "";
         }
 
         const char* defineChar(int numero){
@@ -138,13 +138,14 @@ const char *shift_caps_char_map[] = {
         size_t attBuffer(int numero){
             char* novaLetra = defineChar(numero);
             size_t tam = strlen(novaLetra);
+            size_t um = strlen("A");
             if(tam == 1){
                 if(posBuffer == lenBuffer){
                     buffer[posBuffer] = novaLetra;
                     posBuffer++;
                     lenBuffer++;
                 }else{
-                    for (size_t i = posBuffer; i < lenBuffer+1; i++)
+                    for (size_t i = posBuffer; i < lenBuffer+um; i++)
                     {
                         buffer[i+1] = buffer[i];
                     }
