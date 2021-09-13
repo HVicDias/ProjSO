@@ -101,6 +101,7 @@ void terminal_control(int control, const char* data, size_t size)
 		for (i = 0; i < size; i++){
 			if(data[i] != ' '){
 				comando[i] == data[i];
+				comandoLen++;
 			}else break;
 		}
 		terminal_write(comando, comandoLen);
