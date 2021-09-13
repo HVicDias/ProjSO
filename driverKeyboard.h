@@ -156,19 +156,9 @@ const char *shift_caps_char_map[] = {
                 return 1;
             }else if(novaLetra ==  (char*) "<BACK>")
             {
-                if(posBuffer == lenBuffer){
-                    buffer[posBuffer] = ' ';
-                    posBuffer--;
-                    lenBuffer--;
-                }else{
-                    for (size_t i = posBuffer; i < (size_t)lenBuffer; i++)
-                    {
-                        buffer[i] = buffer[i+1];
-                    }
-                    buffer[lenBuffer] = ' ';
-                    lenBuffer--;
-                    posBuffer--;
-                }
+                buffer[posBuffer] = ' ';
+                posBuffer--;
+            
                 return 1;
             }
             else if (novaLetra ==  (char*) "<ENTER>")
