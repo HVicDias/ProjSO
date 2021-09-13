@@ -100,7 +100,7 @@ void terminal_control(int control, const char* data, size_t size)
 		terminal_row++;
 		for (i = 0; i < size; i++){
 			if(data[i] != ' '){
-				comado[i] == data[i];
+				comando[i] == data[i];
 			}else break;
 		}
 		
