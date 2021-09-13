@@ -105,8 +105,9 @@ void terminal_control(int control, const char* data, size_t size)
 			else break;
 		}
 
-		terminal_write(comando,comandoLen);
+		
 		terminal_row++;
+		terminal_write(comando,comandoLen);
 	}
 }
 
