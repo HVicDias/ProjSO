@@ -161,7 +161,7 @@ const char *shift_caps_char_map[] = {
                     posBuffer--;
                     lenBuffer--;
                 }else{
-                    for (size_t i = posBuffer; i < lenBuffer; i++)
+                    for (size_t i = posBuffer; i < (size_t)lenBuffer; i++)
                     {
                         buffer[i] = buffer[i+1];
                     }
