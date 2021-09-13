@@ -4,6 +4,12 @@
 #include <stddef.h>
 #include <stdint.h>
 
+uint8_t inb(uint16_t port) {
+    uint8_t ret;
+    asm volatile("inb %1, %0" : "=a"(ret) : "Nd"(port));
+    return ret;
+}
+
 size_t strlen(const char* str)
 {
 	size_t len = 0;
@@ -135,9 +141,9 @@ const char *shift_caps_char_map[] = {
             return "";
         }
 
-        size_t attBuffer(int numero){
+        size_t attBuffer(){
             if (inb(0x64)&1){
-                value = inb(0x60); //le o codigo do buffer
+                int numero = inb(0x60); //le o codigo do buffer
                 char* novaLetra = (char*) defineChar(numero);
                 size_t tam = strlen(novaLetra);
                 if(tam == 1){
