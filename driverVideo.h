@@ -98,11 +98,15 @@ void terminal_control(int control, const char* data, size_t size)
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
 		terminal_row++;
-		for (i = 0; i > size; i++){
-			terminal_putchar('A');
-			terminal_row++;
+		for (i = 0; i < size; i++){
+			if(data[i] != ' '){
+				comado[i] == data[i];
+			}else break;
 		}
 		
+		if(comando == "teste1"){
+			terminal_row++;
+		}
 
 		/*while (i==' ' && i<size)
 		{

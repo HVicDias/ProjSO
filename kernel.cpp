@@ -19,6 +19,10 @@ extern "C" void kernel_main(void)
             value = inb(0x60); //le o codigo do buffer
             int cod = keyboard.attBuffer(value);
             terminal_control(cod,keyboard.buffer, keyboard.lenBuffer);
+            if(cod == 2){
+                keyboard.lenBuffer = 0;
+                keyboard.posBuffer = 0;
+            }
         }
     }
 }
