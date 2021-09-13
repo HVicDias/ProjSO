@@ -94,7 +94,7 @@ const char *shift_caps_char_map[] = {
     "<END>", "<DOWN>", "<PgDown>", "<INSERT>", "<DEL>",
     "<PrtSc>", 0, "|", "<BrightDown>", "<BrightUp>"};
 
-class Keyboard{
+ class Keyboard{
     public:
         Keyboard(){
             shift = false;
@@ -180,7 +180,7 @@ class Keyboard{
         }
 
     public:
-        const char buffer[80];
+        char buffer[80];
         bool shift, caps;
         int posBuffer, lenBuffer;
 };
