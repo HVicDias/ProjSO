@@ -88,6 +88,13 @@ void terminal_writestring(const char* data)
 	terminal_write(data, strlen(data));
 }
 
+int strcmp(const char *a, const char *b)
+{
+    while (*a && *a == *b) { ++a; ++b; }
+    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
+}
+
+
 void controle(const char* data, size_t size)
 {
 	char bufferAux[80];
@@ -118,12 +125,5 @@ void terminal_control(int control, const char* data, size_t size)
 		controle(data, size);
 	}
 }
-
-int strcmp(const char *a, const char *b)
-{
-    while (*a && *a == *b) { ++a; ++b; }
-    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
-}
-
 
 #endif
