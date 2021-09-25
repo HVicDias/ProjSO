@@ -43,17 +43,13 @@ size_t terminal_row;
 size_t terminal_column;
 uint8_t terminal_color;
 uint16_t* terminal_buffer;
-int bg = 0;
-int fg = 0;
+vga_color bg = VGA_COLOR_BLACK;
+vga_color fg = VGA_COLOR_LIGHT_GREY;
 
 void terminal_initialize(void)
 {
 	terminal_row = 0;
 	terminal_column = 0;
-	if(bg == 0){
-		bg = VGA_COLOR_BLACK;
-		fg = VGA_COLOR_LIGHT_GREY;
-	}
 	terminal_color = vga_entry_color(fg, bg);
 	terminal_buffer = (uint16_t*) 0xB8000;
 	for (size_t y = 0; y < VGA_HEIGHT; y++) {
