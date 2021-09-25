@@ -118,17 +118,14 @@ void controle(const char* data, size_t size)
 }
 
 
-void terminal_control(int control, const char* data, size_t size,  Keyboard keyboard)
+void terminal_control(int control,  Keyboard keyboard)
 {
-	char comando[20], codigo[20];
-	int comandoLen, codLen = 0;
-	size_t i;
 	if(control == 1){
-		terminal_write(data, size);
+		terminal_write(keyboard.buffer, keyboard.lenBuffer);
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
 		terminal_row++;
-		controle(data, size);
+		controle(keyboard.buffer, keyboard.lenBuffer);
 		keyboard.lenBuffer = 0;
         keyboard.posBuffer = 0;
 	}
