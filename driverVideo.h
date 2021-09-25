@@ -26,6 +26,62 @@ enum vga_color {
 	VGA_COLOR_WHITE = 15,
 };
 
+vga_color getColor(int num){
+	switch (num)
+	{
+	case 0:
+		return VGA_COLOR_BLACK;
+		break;
+	case 1:
+		return VGA_COLOR_BLUE;
+		break;
+	case 2:
+		return VGA_COLOR_GREEN;
+		break;
+	case 3:
+		return VGA_COLOR_CYAN;
+		break;
+	case 4:
+		return VGA_COLOR_RED;
+		break;
+	case 5:
+		return VGA_COLOR_MAGENTA;
+		break;
+	case 6:
+		return VGA_COLOR_BROWN;
+		break;
+	case 7:
+		return VGA_COLOR_LIGHT_GREY;
+		break;
+	case 8:
+		return VGA_COLOR_DARK_GREY;
+		break;
+	case 9:
+		return VGA_COLOR_LIGHT_BLUE;
+		break;
+	case 10:
+		return VGA_COLOR_LIGHT_GREEN;
+		break;
+	case 11:
+		return VGA_COLOR_LIGHT_CYAN;
+		break;
+	case 12:
+		return VGA_COLOR_LIGHT_RED;
+		break;
+	case 13:
+		return VGA_COLOR_LIGHT_MAGENTA;
+		break;
+	case 14:
+		return VGA_COLOR_LIGHT_BROWN;
+		break;
+	case 15:
+		return VGA_COLOR_WHITE;
+		break;
+	default:
+		break;
+	}
+}
+
 static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg)
 {
 	return fg | bg << 4;
@@ -120,6 +176,7 @@ void controle(const char* data, size_t size)
 	}else if(strcmp(bufferAux, "reboot") == 0){
 		
 	}else if(strcmp(bufferAux, "clear") == 0){
+		bg = getColor(5);
 		terminal_initialize();
 	}
 }
