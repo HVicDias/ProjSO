@@ -106,6 +106,8 @@ void controle(const char* data, size_t size)
 			break;
 		}
 	}
+	terminal_write(bufferAux, i);
+
 	if(strcmp(bufferAux, "teste") == 0){
 		terminal_row++;
 	}
