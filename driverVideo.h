@@ -94,6 +94,7 @@ void terminal_control(int control, const char* data, size_t size)
 	int comandoLen, codLen = 0;
 	size_t i;
 	if(control == 1){
+		terminal_write(data, size);
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
 		terminal_row++;

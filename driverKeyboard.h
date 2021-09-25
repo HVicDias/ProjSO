@@ -129,8 +129,8 @@ const char *shift_caps_char_map[] = {
                 }
                 else if (caps)
                     if (numero == 58)
-                        caps = false;
-                    else if (shift)
+                        caps = true;
+                    else if (!shift)
                         return caps_char_map[numero];
                     else
                         return shift_caps_char_map[numero];
