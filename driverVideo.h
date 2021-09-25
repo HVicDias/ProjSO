@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <unistd.h>
+#include <sys/reboot.h>
 
 /* Hardware text mode color constants. */
 enum vga_color {
@@ -41,12 +43,18 @@ size_t terminal_row;
 size_t terminal_column;
 uint8_t terminal_color;
 uint16_t* terminal_buffer;
+enum bg = 0;
+enum fg = 0;
 
 void terminal_initialize(void)
 {
 	terminal_row = 0;
 	terminal_column = 0;
-	terminal_color = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
+	if(bg == 0){
+		bg = VGA_COLOR_BLACK;
+		fg = VGA_COLOR_LIGHT_GREY;
+	}
+	terminal_color = vga_entry_color(fg, bg);
 	terminal_buffer = (uint16_t*) 0xB8000;
 	for (size_t y = 0; y < VGA_HEIGHT; y++) {
 		for (size_t x = 0; x < VGA_WIDTH; x++) {
@@ -107,15 +115,22 @@ void controle(const char* data, size_t size)
 		}
 	}
 
-	if(strcmp(bufferAux, "teste") == 0){
+	if(strcmp(bufferAux, "bgcolor") == 0){
 		terminal_row++;
+	}else if(strcmp(bufferAux, "fgcolor") == 0){
+
+	}else if(strcmp(bufferAux, "info") == 0){ //devs e versao
+		
+	}else if(strcmp(bufferAux, "reboot") == 0){
+		
+	}else if(strcmp(bufferAux, "clear") == 0){
+		terminal_initialize();
 	}
 }
 
 
 void terminal_control(int control, const char* data, size_t size,  size_t prevSize)
 {
-	size_t i;
 	if(control == 1){
 		terminal_write(data, size);
 		terminal_column = (size_t) 0;
