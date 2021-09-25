@@ -88,6 +88,23 @@ void terminal_writestring(const char* data)
 	terminal_write(data, strlen(data));
 }
 
+void controle(const char* data, size_t size)
+{
+	char bufferAux[80];
+	size_t i;
+	for (i = 0; i < size; i++){
+		if(data[i]!=' '){
+			bufferAux[i] = data[i];
+		}else{
+			break;
+		}
+	}
+	if(strcmp(bufferAux, "teste") == 0){
+		terminal_row++;
+	}
+}
+
+
 void terminal_control(int control, const char* data, size_t size)
 {
 	char comando[20], codigo[20];
@@ -108,20 +125,5 @@ int strcmp(const char *a, const char *b)
     return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
 }
 
-void controle(const char* data, size_t size)
-{
-	char bufferAux[80];
-	size_t i;
-	for (i = 0; i < size; i++){
-		if(data[i]!=' '){
-			bufferAux[i] = data[i];
-		}else{
-			break;
-		}
-	}
-	if(strcmp(bufferAux, "teste") == 0){
-		terminal_row++;
-	}
-}
 
 #endif
