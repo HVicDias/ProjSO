@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include "driverKeyboard.h"
 
 /* Hardware text mode color constants. */
 enum vga_color {
@@ -107,7 +108,7 @@ void controle(const char* data, size_t size)
 		}
 	}
 	terminal_column = (size_t) 0;
-	terminal_write(bufferAux, i);
+	terminal_write(data, i);
 	terminal_row++;
 	terminal_column = (size_t) 0;
 
@@ -117,7 +118,7 @@ void controle(const char* data, size_t size)
 }
 
 
-void terminal_control(int control, const char* data, size_t size)
+void terminal_control(int control, const char* data, size_t size,  Keyboard keyboard)
 {
 	char comando[20], codigo[20];
 	int comandoLen, codLen = 0;
@@ -128,6 +129,8 @@ void terminal_control(int control, const char* data, size_t size)
 	}else if(control == 2){
 		terminal_row++;
 		controle(data, size);
+		keyboard.lenBuffer = 0;
+        keyboard.posBuffer = 0;
 	}
 }
 
