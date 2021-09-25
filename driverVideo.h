@@ -170,7 +170,7 @@ void controle(const char* data, size_t size)
 
 	if(strcmp(bufferAux, "bgcolor") == 0){
 		terminal_row++;
-		terminal_putchar(data[i++]);
+		terminal_putchar((char) 5/*data[i++]*/);
 		terminal_column = (size_t) 0;
 		terminal_row++;
 		/*if((int) data[i++] == 5){
