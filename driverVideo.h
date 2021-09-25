@@ -43,8 +43,8 @@ size_t terminal_row;
 size_t terminal_column;
 uint8_t terminal_color;
 uint16_t* terminal_buffer;
-enum bg = 0;
-enum fg = 0;
+int bg = 0;
+int fg = 0;
 
 void terminal_initialize(void)
 {
