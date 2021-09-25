@@ -158,6 +158,9 @@ const char *shift_caps_char_map[] = {
                 }
                 else if (novaLetra ==  (char*) "<ENTER>")
                 {
+                    prevLenBuffer = lenBuffer;
+                    lenBuffer = 0;
+                    posBuffer = 0;
                     return 2;
                 }
             }
@@ -167,7 +170,7 @@ const char *shift_caps_char_map[] = {
     public:
         char buffer[80];
         bool shift, caps;
-        int posBuffer, lenBuffer;
+        int posBuffer, lenBuffer, prevLenBuffer;
 };
 
 

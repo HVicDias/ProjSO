@@ -11,11 +11,11 @@ extern "C" void kernel_main(void)
     /* Initialize terminal interface */
     Keyboard keyboard;
     terminal_initialize();
-    int value, cod;
+    int cod;
 
     while(1){
-        int cod = keyboard.attBuffer();
-        terminal_control(cod, keyboard);
+        cod = keyboard.attBuffer();
+        terminal_control(cod,keyboard.buffer, keyboard.lenBuffer, keyboard.prevLenBuffer);
     }
 
     //func write
