@@ -98,6 +98,23 @@ void terminal_control(int control, const char* data, size_t size)
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
 		terminal_row++;
+		controle(data, size);
+	}
+}
+
+void controle(const char* data, size_t size)
+{
+	char bufferAux[80];
+	size_t i;
+	for (i = 0; i < size; i++){
+		if(data[i]!=' '){
+			bufferAux[i] = data[i];
+		}else{
+			break;
+		}
+	}
+	if(strcmp(bufferAux, "teste") == 0){
+		terminal_row++;
 	}
 }
 
