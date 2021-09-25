@@ -102,6 +102,12 @@ void terminal_control(int control, const char* data, size_t size)
 	}
 }
 
+int strcmp(const char *a, const char *b)
+{
+    while (*a && *a == *b) { ++a; ++b; }
+    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
+}
+
 void controle(const char* data, size_t size)
 {
 	char bufferAux[80];
