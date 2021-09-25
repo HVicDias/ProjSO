@@ -169,9 +169,10 @@ void controle(const char* data, size_t size)
 	}
 
 	if(strcmp(bufferAux, "bgcolor") == 0){
-		terminal_color = vga_entry_color(fg, getColor((int) data[++i]));
+		terminal_row++;
+		terminal_color = vga_entry_color(fg, getColor((int) data[i++]));
 	}else if(strcmp(bufferAux, "fgcolor") == 0){
-		terminal_color = vga_entry_color(getColor((int) data[++i]), bg);
+		terminal_color = vga_entry_color(getColor((int) data[i++]), bg);
 	}else if(strcmp(bufferAux, "info") == 0){ //devs e versao
 		
 	}else if(strcmp(bufferAux, "reboot") == 0){
