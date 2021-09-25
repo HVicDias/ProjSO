@@ -107,10 +107,6 @@ void controle(const char* data, size_t size)
 			break;
 		}
 	}
-	terminal_column = (size_t) 0;
-	terminal_write(data, i);
-	terminal_row++;
-	terminal_column = (size_t) 0;
 
 	if(strcmp(bufferAux, "teste") == 0){
 		terminal_row++;
