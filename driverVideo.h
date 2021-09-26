@@ -96,6 +96,22 @@ vga_color getColor(char* cor){
 	}
 }
 
+
+uint8_t inb(uint16_t port) {
+    uint8_t ret;
+    asm volatile("inb %1, %0" : "=a"(ret) : "Nd"(port));
+    return ret;
+}
+
+static inline void outb(uint16_t port, uint8_t val)
+{
+    asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
+    /* There's an outb %al, $imm8  encoding, for compile-time constant port numbers that fit in 8b.  (N constraint).
+     * Wider immediate constants would be truncated at assemble-time (e.g. "i" constraint).
+     * The  outb  %al, %dx  encoding is the only option for all other cases.
+     * %1 expands to %dx because  port  is a uint16_t.  %w1 could be used if we had the port number a wider C type */
+}
+
 static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg)
 {
 	return fg | bg << 4;
@@ -184,26 +200,6 @@ void info(){
 	terminal_writestring("Version: 1.0.0.0");
 	terminal_row++;
 	terminal_column = (size_t) 0;
-}
- 
-void reboot()
-{
-    uint8_t temp;
- 
-    asm volatile ("cli"); /* disable all interrupts */
- 
-    /* Clear all keyboard buffers (output and command buffers) */
-    do
-    {
-        temp = inb(KBRD_INTRFC); /* empty user data */
-        if (check_flag(temp, KBRD_BIT_KDATA) != 0)
-            inb(KBRD_IO); /* empty keyboard data */
-    } while (check_flag(temp, KBRD_BIT_UDATA) != 0);
- 
-    outb(KBRD_INTRFC, KBRD_RESET); /* pulse CPU reset line */
-loop:
-    asm volatile ("hlt"); /* if that didn't work, halt the CPU */
-    goto loop; /* if a NMI is received, halt again */
 }
 
 void controle(const char* data, size_t size)
