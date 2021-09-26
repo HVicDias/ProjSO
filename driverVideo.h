@@ -106,7 +106,13 @@ void terminal_initialize(void)
 }
 
 void terminal_alter_color(){
-
+	terminal_color = vga_entry_color(fg, bg);
+	for (size_t y = 0; y < VGA_HEIGHT; y++) {
+		for (size_t x = 0; x < VGA_WIDTH; x++) {
+			const size_t index = y * VGA_WIDTH + x;
+			terminal_buffer[index] = vga_entry(terminal_buffer[index], terminal_color);
+		}
+	}
 }
 
 void terminal_setcolor(uint8_t color)
@@ -164,7 +170,7 @@ void controle(const char* data, size_t size)
 		}
 
 		bg = getColor(bufferAux2);
-		terminal_initialize();
+		terminal_alter_color();
 	}else if(strcmp(bufferAux, "fgcolor") == 0){
 		//terminal_color = vga_entry_color(getColor((int) data[i]), bg);
 	}else if(strcmp(bufferAux, "info") == 0){ //devs e versao
