@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <sys/reboot.h>
 
+int strcmp(const char *a, const char *b);
+
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
