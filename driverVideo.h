@@ -28,7 +28,12 @@ enum vga_color {
 
 int strcmp(const char *a, const char *b)
 {
-    while (*a && *a == *b) { ++a; ++b; }
+    while (*a && *a == *b) { 
+		++a; 
+		++b; 
+	}
+	if(*a == '\0')
+			return 0;
     return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
 }
 
