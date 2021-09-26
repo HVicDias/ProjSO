@@ -189,8 +189,9 @@ void terminal_control(int control, const char* data, size_t size,  size_t prevSi
 		terminal_write(data, size);
 		terminal_column = (size_t) 0;
 	}else if(control == 2){
-		terminal_row++;
 		controle(data, prevSize);
+		terminal_row++;
+		terminal_column = (size_t) 0;
 	}
 }
 
