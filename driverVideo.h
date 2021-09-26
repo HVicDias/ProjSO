@@ -169,6 +169,15 @@ void info(){
 	terminal_column = (size_t) 0;
 }
 
+void reboot()
+{
+    uint8_t good = 0x02;
+    while (good & 0x02)
+        good = inb(0x64);
+    outb(0x64, 0xFE);
+    halt();
+}
+
 void controle(const char* data, size_t size)
 {
 	char bufferAux[80] = {'\0'}, bufferAux2[80] = {'\0'};
