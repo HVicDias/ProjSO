@@ -3,8 +3,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <unistd.h>
-#include <sys/reboot.h>
 
 /* keyboard interface IO port: data and control
    READ:   status port
@@ -200,6 +198,26 @@ void info(){
 	terminal_writestring("Version: 1.0.0.0");
 	terminal_row++;
 	terminal_column = (size_t) 0;
+}
+
+void reboot()
+{
+    uint8_t temp;
+ 
+    asm volatile ("cli"); /* disable all interrupts */
+ 
+    /* Clear all keyboard buffers (output and command buffers) */
+    do
+    {
+        temp = inb(KBRD_INTRFC); /* empty user data */
+        if (check_flag(temp, KBRD_BIT_KDATA) != 0)
+            inb(KBRD_IO); /* empty keyboard data */
+    } while (check_flag(temp, KBRD_BIT_UDATA) != 0);
+ 
+    outb(KBRD_INTRFC, KBRD_RESET); /* pulse CPU reset line */
+loop:
+    asm volatile ("hlt"); /* if that didn't work, halt the CPU */
+    goto loop; /* if a NMI is received, halt again */
 }
 
 void controle(const char* data, size_t size)

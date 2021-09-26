@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include "driverVideo.h"
 
 size_t strlen(const char* str)
 {
