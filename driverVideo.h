@@ -134,6 +134,12 @@ void terminal_putchar(char c)
 	}
 }
 
+void terminal_write(const char* data, size_t size)
+{
+	for (size_t i = 0; i < size; i++)
+		terminal_putchar(data[i]);
+}
+
 int strcmp(const char *a, const char *b)
 {
 	size_t i = 0;
@@ -151,25 +157,14 @@ int strcmp(const char *a, const char *b)
 	terminal_row++;
 	terminal_column = (size_t) 0;
 
-	terminal_writestring(aux);
+	terminal_write(aux,i);
 		terminal_row++;
 	terminal_column = (size_t) 0;
-	terminal_writestring(aux2);
+	terminal_write(aux2,i);
 		terminal_row++;
 	terminal_column = (size_t) 0;
 	
     return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
-}
-
-void terminal_write(const char* data, size_t size)
-{
-	for (size_t i = 0; i < size; i++)
-		terminal_putchar(data[i]);
-}
-
-void terminal_writestring(const char* data)
-{
-	terminal_write(data, strlen(data));
 }
 
 void controle(const char* data, size_t size)
