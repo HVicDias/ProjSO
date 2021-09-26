@@ -27,59 +27,40 @@ enum vga_color {
 };
 
 vga_color getColor(char *cor){
-	switch (num)
-	{
-	case "black":
+	if(strcmp(cor, "black") == 0){
 		return VGA_COLOR_BLACK;
-		break;
-	case "blue":
+	}else if(strcmp(cor, "blue") == 0){
 		return VGA_COLOR_BLUE;
-		break;
-	case "greeb":
+	}else if(strcmp(cor, "green") == 0){ 
 		return VGA_COLOR_GREEN;
-		break;
-	case "cyan":
+	}else if(strcmp(cor, "cyan") == 0){
 		return VGA_COLOR_CYAN;
-		break;
-	case "red":
+	}else if(strcmp(cor, "red") == 0){
 		return VGA_COLOR_RED;
-		break;
-	case "magenta":
+	}else if(strcmp(cor, "magenta") == 0){
 		return VGA_COLOR_MAGENTA;
-		break;
-	case "brown";
+	}else if(strcmp(cor, "brown") == 0){ 
 		return VGA_COLOR_BROWN;
-		break;
-	case "lgrey":
+	}else if(strcmp(cor, "lgrey") == 0){
 		return VGA_COLOR_LIGHT_GREY;
-		break;
-	case "dgray":
+	}else if(strcmp(cor, "dgray") == 0){
 		return VGA_COLOR_DARK_GREY;
-		break;
-	case "lblue":
+	}else if(strcmp(cor, "lblue") == 0){
 		return VGA_COLOR_LIGHT_BLUE;
-		break;
-	case "lgreen":
+	}else if(strcmp(cor, "lgreen") == 0){ 
 		return VGA_COLOR_LIGHT_GREEN;
-		break;
-	case "lcyan":
+	}else if(strcmp(cor, "lcyan") == 0){
 		return VGA_COLOR_LIGHT_CYAN;
-		break;
-	case "lred":
+	}else if(strcmp(cor, "lred") == 0){
 		return VGA_COLOR_LIGHT_RED;
-		break;
-	case "lmagenta":
+	}else if(strcmp(cor, "lmagenta") == 0){
 		return VGA_COLOR_LIGHT_MAGENTA;
-		break;
-	case "lbrown":
+	}else if(strcmp(cor, "lbrown") == 0){ 
 		return VGA_COLOR_LIGHT_BROWN;
-		break;
-	case "white":
+	}else if(strcmp(cor, "white") == 0){
 		return VGA_COLOR_WHITE;
-		break;
-	default:
-	return VGA_COLOR_BLACK;
-		break;
+	}else{
+		return VGA_COLOR_BLACK;
 	}
 }
 
