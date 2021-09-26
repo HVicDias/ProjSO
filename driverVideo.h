@@ -26,55 +26,55 @@ enum vga_color {
 	VGA_COLOR_WHITE = 15,
 };
 
-vga_color getColor(int num){
+vga_color getColor(char *cor){
 	switch (num)
 	{
-	case 0:
+	case "black":
 		return VGA_COLOR_BLACK;
 		break;
-	case 1:
+	case "blue":
 		return VGA_COLOR_BLUE;
 		break;
-	case 2:
+	case "greeb":
 		return VGA_COLOR_GREEN;
 		break;
-	case 3:
+	case "cyan":
 		return VGA_COLOR_CYAN;
 		break;
-	case 4:
+	case "red":
 		return VGA_COLOR_RED;
 		break;
-	case 5:
+	case "magenta":
 		return VGA_COLOR_MAGENTA;
 		break;
-	case 6:
+	case "brown";
 		return VGA_COLOR_BROWN;
 		break;
-	case 7:
+	case "lgrey":
 		return VGA_COLOR_LIGHT_GREY;
 		break;
-	case 8:
+	case "dgray":
 		return VGA_COLOR_DARK_GREY;
 		break;
-	case 9:
+	case "lblue":
 		return VGA_COLOR_LIGHT_BLUE;
 		break;
-	case 10:
+	case "lgreen":
 		return VGA_COLOR_LIGHT_GREEN;
 		break;
-	case 11:
+	case "lcyan":
 		return VGA_COLOR_LIGHT_CYAN;
 		break;
-	case 12:
+	case "lred":
 		return VGA_COLOR_LIGHT_RED;
 		break;
-	case 13:
+	case "lmagenta":
 		return VGA_COLOR_LIGHT_MAGENTA;
 		break;
-	case 14:
+	case "lbrown":
 		return VGA_COLOR_LIGHT_BROWN;
 		break;
-	case 15:
+	case "white":
 		return VGA_COLOR_WHITE;
 		break;
 	default:
@@ -115,6 +115,10 @@ void terminal_initialize(void)
 			terminal_buffer[index] = vga_entry(' ', terminal_color);
 		}
 	}
+}
+
+void terminal_alter_color(){
+
 }
 
 void terminal_setcolor(uint8_t color)
@@ -158,8 +162,8 @@ int strcmp(const char *a, const char *b)
 
 void controle(const char* data, size_t size)
 {
-	char bufferAux[80];
-	size_t i;
+	char bufferAux[80], bufferAux2[80];
+	size_t i, j;
 	for (i = 0; i < size; i++){
 		if(data[i]!=' '){
 			bufferAux[i] = data[i];
@@ -169,7 +173,16 @@ void controle(const char* data, size_t size)
 	}
 
 	if(strcmp(bufferAux, "bgcolor") == 0){
-		bg = getColor(((int) data[++i])-48);
+		for (j = i; j < size; j++){
+			if(data[i]!=' '){
+				bufferAux2[j-i] = data[j];
+			}else{
+				break;
+			}
+		}
+		terminal_write(bufferAux2,j);
+		terminal_row++;
+		bg = getColor(bufferAux2);
 		terminal_initialize();
 	}else if(strcmp(bufferAux, "fgcolor") == 0){
 		terminal_color = vga_entry_color(getColor((int) data[i]), bg);
