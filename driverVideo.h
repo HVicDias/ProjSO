@@ -211,8 +211,9 @@ void controle(const char* data, size_t size)
 	}else if(strcmp(bufferAux, "info") == 0){ 
 		info();
 	}else if(strcmp(bufferAux, "reboot") == 0){
-		sync();
-		reboot(RB_AUTOBOOT);
+		 reboot(LINUX_REBOOT_MAGIC1, 
+           LINUX_REBOOT_MAGIC2, 
+           LINUX_REBOOT_CMD_POWER_OFF, 0);
 	}else if(strcmp(bufferAux, "clear") == 0){
 		terminal_initialize();
 	}
