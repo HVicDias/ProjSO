@@ -6,6 +6,16 @@
 #include <unistd.h>
 #include <sys/reboot.h>
 
+static const size_t VGA_WIDTH = 80;
+static const size_t VGA_HEIGHT = 25;
+
+size_t terminal_row;
+size_t terminal_column;
+uint8_t terminal_color;
+uint16_t* terminal_buffer;
+vga_color bg = VGA_COLOR_BLACK;
+vga_color fg = VGA_COLOR_LIGHT_GREY;
+
 /* Hardware text mode color constants. */
 enum vga_color {
 	VGA_COLOR_BLACK = 0,
@@ -95,16 +105,6 @@ static inline uint16_t vga_entry(unsigned char uc, uint8_t color)
 {
 	return (uint16_t) uc | (uint16_t) color << 8;
 }
-
-static const size_t VGA_WIDTH = 80;
-static const size_t VGA_HEIGHT = 25;
-
-size_t terminal_row;
-size_t terminal_column;
-uint8_t terminal_color;
-uint16_t* terminal_buffer;
-vga_color bg = VGA_COLOR_BLACK;
-vga_color fg = VGA_COLOR_LIGHT_GREY;
 
 void terminal_initialize(void)
 {
