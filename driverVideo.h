@@ -156,6 +156,7 @@ int strcmp(const char *a, const char *b)
 	aux2[i] = *b;
 	terminal_row++;
 	terminal_column = (size_t) 0;
+	i++;
 
 	terminal_write(aux,i);
 		terminal_row++;
