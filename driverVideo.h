@@ -136,22 +136,27 @@ void terminal_putchar(char c)
 
 int strcmp(const char *a, const char *b)
 {
+	size_t i = 0;
+	char aux[80], aux2[80];
+	
     while (*a && *a == *b) { 
 		++a; 
 		++b; 
-		terminal_putchar(*a);
-		terminal_row++;
-		terminal_column = (size_t) 0;
-		terminal_putchar(*b);
-		terminal_row++;
-		terminal_column = (size_t) 0;
+		aux[i] = *a;
+		aux2[i] = *b;
+		i++;
 	}
-	terminal_putchar(*a);
+	aux[i] = *a;
+	aux2[i] = *b;
+	terminal_row++;
+	terminal_column = (size_t) 0;
+
+	terminal_writestring(aux);
 		terminal_row++;
-		terminal_column = (size_t) 0;
-		terminal_putchar(*b);
+	terminal_column = (size_t) 0;
+	terminal_writestring(aux2);
 		terminal_row++;
-		terminal_column = (size_t) 0;
+	terminal_column = (size_t) 0;
 	
     return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
 }
