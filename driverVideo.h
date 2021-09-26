@@ -162,10 +162,9 @@ void controle(const char* data, size_t size)
 				break;
 			}
 		}
-		terminal_write(bufferAux2,j);
-		terminal_row++;
-		//bg = getColor(bufferAux2);
-		//terminal_initialize();
+
+		bg = getColor(bufferAux2);
+		terminal_initialize();
 	}else if(strcmp(bufferAux, "fgcolor") == 0){
 		//terminal_color = vga_entry_color(getColor((int) data[i]), bg);
 	}else if(strcmp(bufferAux, "info") == 0){ //devs e versao
