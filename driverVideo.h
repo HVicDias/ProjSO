@@ -31,9 +31,20 @@ int strcmp(const char *a, const char *b)
     while (*a && *a == *b) { 
 		++a; 
 		++b; 
+		terminal_putchar(*a);
+		terminal_row++;
+		terminal_column = (size_t) 0;
+		terminal_putchar(*b);
+		terminal_row++;
+		terminal_column = (size_t) 0;
 	}
-	if(*a == '\0')
-			return 0;
+	terminal_putchar(*a);
+		terminal_row++;
+		terminal_column = (size_t) 0;
+		terminal_putchar(*b);
+		terminal_row++;
+		terminal_column = (size_t) 0;
+	
     return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
 }
 
