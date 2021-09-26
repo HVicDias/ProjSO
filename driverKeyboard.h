@@ -159,7 +159,6 @@ const char *shift_caps_char_map[] = {
                 }else if(novaLetra ==  (char*) "<BACK>" && posBuffer > 0)
                 {
                     buffer[--posBuffer] = ' ';
-                    lenBuffer--;
                     return 1;
                 }
                 else if (novaLetra ==  (char*) "<ENTER>")
