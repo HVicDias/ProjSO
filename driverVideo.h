@@ -169,18 +169,8 @@ void controle(const char* data, size_t size)
 	}
 
 	if(strcmp(bufferAux, "bgcolor") == 0){
-		terminal_row++;
-		terminal_putchar((int) data[i++]);
-		terminal_column = (size_t) 0;
-		terminal_row++;
-		/*if((int) data[i++] == 5){
-			terminal_row++;
-		}else if((int) data[i++] == 35){
-			terminal_row++;
-			terminal_row++;
-		}*/
-		//bg = getColor((int) data[++i]);
-		//terminal_initialize();
+		bg = getColor(((int) data[++i])-48);
+		terminal_initialize();
 	}else if(strcmp(bufferAux, "fgcolor") == 0){
 		terminal_color = vga_entry_color(getColor((int) data[i]), bg);
 	}else if(strcmp(bufferAux, "info") == 0){ //devs e versao
