@@ -154,6 +154,7 @@ void controle(const char* data, size_t size)
 	}
 
 	if(strcmp(bufferAux, "bgcolor") == 0){
+		i++;
 		for (j = i; j < size; j++){
 			if(data[i]!=' '){
 				bufferAux2[j-i] = data[j];
