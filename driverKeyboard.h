@@ -144,7 +144,7 @@ const char *shift_caps_char_map[] = {
 
         size_t attBuffer(){
             if (inb(0x64)&1){
-                if(enter = true){
+                if(enter == true){
                     buffer[80] = {'\0'};
                     enter = false;
                 }
