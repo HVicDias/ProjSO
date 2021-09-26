@@ -140,32 +140,28 @@ void terminal_write(const char* data, size_t size)
 		terminal_putchar(data[i]);
 }
 
-int strcmp(const char *a, const char *b)
+void terminal_writestring(const char* data, size_t size)
 {
-	size_t i = 0;
-	char aux[80], aux2[80];
-	
-    while (*a && *a == *b) { 
-		++a; 
-		++b; 
-		aux[i] = *a;
-		aux2[i] = *b;
-		i++;
-	}
-	aux[i] = *a;
-	aux2[i] = *b;
-	terminal_row++;
-	terminal_column = (size_t) 0;
-	i++;
+	terminal_write(data, strlen(data));
+}
 
-	terminal_write(aux,i);
-		terminal_row++;
-	terminal_column = (size_t) 0;
-	terminal_write(aux2,i);
-		terminal_row++;
-	terminal_column = (size_t) 0;
-	
+int strcmp(const char *a, const char *b)
+{	
+    while (*a && *a == *b) { ++a; ++b; }
     return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
+}
+
+void info(){
+	terminal_writestring("Desenvolvido por:");
+	terminal_row++;
+	terminal_writestring("Henrique Victorino Dias");
+	terminal_row++;
+	terminal_writestring("Gustavo Melo Cacau");
+	terminal_row++;
+	terminal_writestring("Lucas Rodrigues São João Miguel");
+	terminal_row++;
+	terminal_writestring("Versão: 1.0.0.0");
+	terminal_row++;
 }
 
 void controle(const char* data, size_t size)
@@ -195,9 +191,20 @@ void controle(const char* data, size_t size)
 		bg = getColor(bufferAux2);
 		terminal_alter_color();
 	}else if(strcmp(bufferAux, "fgcolor") == 0){
-		//terminal_color = vga_entry_color(getColor((int) data[i]), bg);
-	}else if(strcmp(bufferAux, "info") == 0){ //devs e versao
-		
+		i++;
+		for (j = i; j < size; j++){
+			if(data[i]!=' '){
+				bufferAux2[j-i] = data[j];
+			}else{
+				break;
+			}
+		}
+		bufferAux2[++j] = '\0';
+
+		fg = getColor(bufferAux2);
+		terminal_alter_color();
+	}else if(strcmp(bufferAux, "info") == 0){ 
+		info();
 	}else if(strcmp(bufferAux, "reboot") == 0){
 		
 	}else if(strcmp(bufferAux, "clear") == 0){
