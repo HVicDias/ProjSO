@@ -37,27 +37,7 @@ enum vga_color {
 vga_color bg = VGA_COLOR_BLACK;
 vga_color fg = VGA_COLOR_LIGHT_GREY;
 
-int strcmp(const char *a, const char *b)
-{
-    while (*a && *a == *b) { 
-		++a; 
-		++b; 
-		terminal_putchar(*a);
-		terminal_row++;
-		terminal_column = (size_t) 0;
-		terminal_putchar(*b);
-		terminal_row++;
-		terminal_column = (size_t) 0;
-	}
-	terminal_putchar(*a);
-		terminal_row++;
-		terminal_column = (size_t) 0;
-		terminal_putchar(*b);
-		terminal_row++;
-		terminal_column = (size_t) 0;
-	
-    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
-}
+
 
 vga_color getColor(char* cor){
 	if(strcmp(cor, "black") == 0){
@@ -150,6 +130,28 @@ void terminal_putchar(char c)
 		if (++terminal_row == VGA_HEIGHT)
 			terminal_row = 0;
 	}
+}
+
+int strcmp(const char *a, const char *b)
+{
+    while (*a && *a == *b) { 
+		++a; 
+		++b; 
+		terminal_putchar(*a);
+		terminal_row++;
+		terminal_column = (size_t) 0;
+		terminal_putchar(*b);
+		terminal_row++;
+		terminal_column = (size_t) 0;
+	}
+	terminal_putchar(*a);
+		terminal_row++;
+		terminal_column = (size_t) 0;
+		terminal_putchar(*b);
+		terminal_row++;
+		terminal_column = (size_t) 0;
+	
+    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
 }
 
 void terminal_write(const char* data, size_t size)
