@@ -58,7 +58,7 @@ vga_color getColor(char* cor){
 		return VGA_COLOR_BROWN;
 	}else if(strcmp(cor, "lgrey") == 0){
 		return VGA_COLOR_LIGHT_GREY;
-	}else if(strcmp(cor, "dgray") == 0){
+	}else if(strcmp(cor, "dgrey") == 0){
 		return VGA_COLOR_DARK_GREY;
 	}else if(strcmp(cor, "lblue") == 0){
 		return VGA_COLOR_LIGHT_BLUE;
@@ -211,7 +211,8 @@ void controle(const char* data, size_t size)
 	}else if(strcmp(bufferAux, "info") == 0){ 
 		info();
 	}else if(strcmp(bufferAux, "reboot") == 0){
-		
+		sync();
+		reboot(RB_AUTOBOOT);
 	}else if(strcmp(bufferAux, "clear") == 0){
 		terminal_initialize();
 	}
