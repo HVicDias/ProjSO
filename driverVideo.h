@@ -168,7 +168,7 @@ void controle(const char* data, size_t size)
 				break;
 			}
 		}
-		bufferAux2[++j] = '/0';
+		bufferAux2[++j] = '\0';
 
 		bg = getColor(bufferAux2);
 		terminal_alter_color();
