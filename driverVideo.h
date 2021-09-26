@@ -26,7 +26,7 @@ enum vga_color {
 	VGA_COLOR_WHITE = 15,
 };
 
-vga_color getColor(char *cor){
+vga_color getColor(char* cor){
 	if(strcmp(cor, "black") == 0){
 		return VGA_COLOR_BLACK;
 	}else if(strcmp(cor, "blue") == 0){
@@ -166,13 +166,12 @@ void controle(const char* data, size_t size)
 		bg = getColor(bufferAux2);
 		terminal_initialize();
 	}else if(strcmp(bufferAux, "fgcolor") == 0){
-		terminal_color = vga_entry_color(getColor((int) data[i]), bg);
+		//terminal_color = vga_entry_color(getColor((int) data[i]), bg);
 	}else if(strcmp(bufferAux, "info") == 0){ //devs e versao
 		
 	}else if(strcmp(bufferAux, "reboot") == 0){
 		
 	}else if(strcmp(bufferAux, "clear") == 0){
-		bg = getColor(5);
 		terminal_initialize();
 	}
 }
