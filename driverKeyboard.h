@@ -105,9 +105,10 @@ const char *shift_caps_char_map[] = {
         Keyboard(){
             shift = false;
             caps = false;
+            enter = false;
             posBuffer = 0;
             lenBuffer = 0;
-            buffer[0] = (char) ' ';
+            buffer[80] = {'\0'};
         }
 
         const char* defineChar(int numero){
@@ -143,6 +144,10 @@ const char *shift_caps_char_map[] = {
 
         size_t attBuffer(){
             if (inb(0x64)&1){
+                if(enter = true){
+                    buffer[80] = {'\0'};
+                    enter = false;
+                }
                 int numero = inb(0x60); //le o codigo do buffer
                 char* novaLetra = (char*) defineChar(numero);
                 size_t tam = strlen(novaLetra);
@@ -158,6 +163,7 @@ const char *shift_caps_char_map[] = {
                 }
                 else if (novaLetra ==  (char*) "<ENTER>")
                 {
+                    enter = true;
                     prevLenBuffer = lenBuffer;
                     lenBuffer = 0;
                     posBuffer = 0;
@@ -171,6 +177,7 @@ const char *shift_caps_char_map[] = {
         char buffer[80];
         bool shift, caps;
         int posBuffer, lenBuffer, prevLenBuffer;
+        bool enter;
 };
 
 
