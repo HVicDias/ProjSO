@@ -170,7 +170,7 @@ int strcmp(const char *a, const char *b)
 
 void controle(const char* data, size_t size)
 {
-	char bufferAux[80], bufferAux2[80];
+	char bufferAux[80] = {'\0'}, bufferAux2[80] = {'\0'};
 	size_t i, j;
 	
 	for (i = 0; i < size; i++){
