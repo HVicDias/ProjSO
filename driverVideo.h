@@ -32,7 +32,6 @@ int strcmp(const char *a, const char *b)
     return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
 }
 
-
 vga_color getColor(char* cor){
 	if(strcmp(cor, "black") == 0){
 		return VGA_COLOR_BLACK;
@@ -151,6 +150,7 @@ void controle(const char* data, size_t size)
 {
 	char bufferAux[80], bufferAux2[80];
 	size_t i, j;
+	
 	for (i = 0; i < size; i++){
 		if(data[i]!=' '){
 			bufferAux[i] = data[i];
@@ -168,6 +168,7 @@ void controle(const char* data, size_t size)
 				break;
 			}
 		}
+		bufferAux2[++j] = '/0';
 
 		bg = getColor(bufferAux2);
 		terminal_alter_color();
