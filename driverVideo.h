@@ -26,6 +26,13 @@ enum vga_color {
 	VGA_COLOR_WHITE = 15,
 };
 
+int strcmp(const char *a, const char *b)
+{
+    while (*a && *a == *b) { ++a; ++b; }
+    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
+}
+
+
 vga_color getColor(char* cor){
 	if(strcmp(cor, "black") == 0){
 		return VGA_COLOR_BLACK;
@@ -133,13 +140,6 @@ void terminal_writestring(const char* data)
 {
 	terminal_write(data, strlen(data));
 }
-
-int strcmp(const char *a, const char *b)
-{
-    while (*a && *a == *b) { ++a; ++b; }
-    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
-}
-
 
 void controle(const char* data, size_t size)
 {
