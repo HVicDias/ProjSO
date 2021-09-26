@@ -140,7 +140,7 @@ void terminal_write(const char* data, size_t size)
 		terminal_putchar(data[i]);
 }
 
-void terminal_writestring(const char* data, size_t size)
+void terminal_writestring(const char* data)
 {
 	terminal_write(data, strlen(data));
 }
@@ -154,14 +154,19 @@ int strcmp(const char *a, const char *b)
 void info(){
 	terminal_writestring("Desenvolvido por:");
 	terminal_row++;
+	terminal_column = (size_t) 0;
 	terminal_writestring("Henrique Victorino Dias");
 	terminal_row++;
+	terminal_column = (size_t) 0;
 	terminal_writestring("Gustavo Melo Cacau");
 	terminal_row++;
-	terminal_writestring("Lucas Rodrigues São João Miguel");
+	terminal_column = (size_t) 0;
+	terminal_writestring("Lucas Rodrigues Sao Joao Miguel");
 	terminal_row++;
-	terminal_writestring("Versão: 1.0.0.0");
+	terminal_column = (size_t) 0;
+	terminal_writestring("Version: 1.0.0.0");
 	terminal_row++;
+	terminal_column = (size_t) 0;
 }
 
 void controle(const char* data, size_t size)
