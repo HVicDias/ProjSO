@@ -105,7 +105,6 @@ const char *shift_caps_char_map[] = {
         Keyboard(){
             shift = false;
             caps = false;
-            enter = false;
             posBuffer = 0;
             lenBuffer = 0;
         }
