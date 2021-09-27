@@ -5,14 +5,6 @@
 #include <stdint.h>
 #include "driverVideo.h"
 
-size_t strlen(const char* str)
-{
-	size_t len = 0;
-	while (str[len])
-		len++;
-	return len;
-}
-
 const char *char_map[] = {
     0,
     "<ESC>",
