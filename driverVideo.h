@@ -161,9 +161,7 @@ void info(){
 
 void reboot()
 {
-    while(inb(0x64) & (2 != 2)){
-
-	};
+    while(inb(0x64) & (2 != 2)){}
 	outb(0x64,0xFE);
 }
 
