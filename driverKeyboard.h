@@ -3,7 +3,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include "driverVideo.h"
+#include "system.h"
+#include "string.h"
 
 const char *char_map[] = {
     0,

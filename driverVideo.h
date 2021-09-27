@@ -4,16 +4,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-int strcmp(const char *a, const char *b);
-
-size_t strlen(const char* str)
-{
-	size_t len = 0;
-	while (str[len])
-		len++;
-	return len;
-}
-
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
@@ -44,8 +34,6 @@ enum vga_color {
 
 vga_color bg = VGA_COLOR_BLACK;
 vga_color fg = VGA_COLOR_LIGHT_GREY;
-
-
 
 vga_color getColor(char* cor){
 	if(strcmp(cor, "black") == 0){
@@ -83,22 +71,6 @@ vga_color getColor(char* cor){
 	}else{
 		return VGA_COLOR_BLACK;
 	}
-}
-
-
-uint8_t inb(uint16_t port) {
-    uint8_t ret;
-    asm volatile("inb %1, %0" : "=a"(ret) : "Nd"(port));
-    return ret;
-}
-
-static inline void outb(uint16_t port, uint8_t val)
-{
-    asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
-    /* There's an outb %al, $imm8  encoding, for compile-time constant port numbers that fit in 8b.  (N constraint).
-     * Wider immediate constants would be truncated at assemble-time (e.g. "i" constraint).
-     * The  outb  %al, %dx  encoding is the only option for all other cases.
-     * %1 expands to %dx because  port  is a uint16_t.  %w1 could be used if we had the port number a wider C type */
 }
 
 static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg)
@@ -165,12 +137,6 @@ void terminal_write(const char* data, size_t size)
 void terminal_writestring(const char* data)
 {
 	terminal_write(data, strlen(data));
-}
-
-int strcmp(const char *a, const char *b)
-{	
-    while (*a && *a == *b) { ++a; ++b; }
-    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
 }
 
 void info(){
