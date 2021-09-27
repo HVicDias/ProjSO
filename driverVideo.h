@@ -161,8 +161,10 @@ void info(){
 
 void reboot()
 {
-    while(inb(0x64) & (2 != 2) );
-		outb(0x64,0xFE);
+    while(inb(0x64) & (2 != 2)){
+
+	};
+	outb(0x64,0xFE);
 }
 
 void controle(const char* data, size_t size)
