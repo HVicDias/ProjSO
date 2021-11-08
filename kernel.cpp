@@ -14,8 +14,7 @@ extern "C" void init_cpu();
 extern "C" void __interrupt_handler(uint32_t id)
 {
     //cod = keyboard.attBuffer();
-    terminal_control(1,"teste 1", keyboard.lenBuffer, keyboard.prevLenBuffer);
-    terminal_control(2,"teste 1", keyboard.lenBuffer, keyboard.prevLenBuffer);
+    terminal_control(1,(char*) id), 7, 6);
 }
 }
 
