@@ -740,3 +740,9 @@ init_cpu:
 	idt_config
 	STI
     RET
+
+GLOBAL _run_app
+_run_app:
+    ; Pulando para o endereços 0x2000
+    MOV EAX, 0x2000
+    JMP EAX
