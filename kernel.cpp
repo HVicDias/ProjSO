@@ -32,6 +32,7 @@ extern "C" void kernel_main(void)
         /* code */
     }
     
+    
     //func write
     //func read
 }
