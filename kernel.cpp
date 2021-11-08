@@ -1,6 +1,6 @@
 #include "driverKeyboard.h"
 #include "driverVideo.h"
-#include "register.h"
+#include "registers.h"
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -8,11 +8,11 @@
 Keyboard keyboard;
 int cod;
 
-int hexdump[] = {0000000, b866, 0004, 0000, bb66, 0001, 0000, b966, 0028,
-                 0000010, 0000, ba66, 000d, 0000, 80cd, b866, 0001, 0000,
-                 0000020, bb66, 0000, 0000, 80cd, 6548, 6c6c, 206f, 6f77,
-                 0000030, 6c72, 2164, 000a,
-                 0000035};
+uint16_t mem[] = {0000000, 0xb866, 0x0004, 0x0000, 0xbb66, 0x0001, 0x0000, 0xb966, 0x0028,
+                  0000010, 0x0000, 0xba66, 0x000d, 0x0000, 0x80cd, 0xb866, 0x0001, 0x0000,
+                  0000020, 0xbb66, 0x0000, 0x0000, 0x80cd, 0x6548, 0x6c6c, 0x206f, 0x6f77,
+                  0000030, 0x6c72, 0x2164, 0x000a,
+                  0000035};
 
 //Declarando a função do config.s
 extern "C" void init_cpu();

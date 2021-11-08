@@ -1,5 +1,5 @@
-#ifndef REGISTER_H
-#define REGISTER_H
+#ifndef REGISTERS_H
+#define REGISTERS_H
 
 #include <stdint.h>
 
