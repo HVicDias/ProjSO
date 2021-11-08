@@ -13,8 +13,8 @@ extern "C" void init_cpu();
 // Seu tratador de interrupções
 extern "C" void __interrupt_handler(uint32_t id)
 {
-    cod = keyboard.attBuffer();
-    terminal_control(cod, (char*) id, keyboard.lenBuffer, keyboard.prevLenBuffer);
+    //cod = keyboard.attBuffer();
+    terminal_control(1, (char*) id, keyboard.lenBuffer, keyboard.prevLenBuffer);
 }
 
 extern "C" void kernel_main(void)
