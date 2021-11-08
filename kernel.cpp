@@ -14,8 +14,7 @@ extern "C" void init_cpu();
 extern "C" void __interrupt_handler(uint32_t id)
 {
     cod = keyboard.attBuffer();
-    terminal_control(cod, keyboard.buffer, keyboard.lenBuffer, keyboard.prevLenBuffer);
-    // id da interrupção
+    terminal_control(cod, (char*) id, keyboard.lenBuffer, keyboard.prevLenBuffer);
 }
 
 extern "C" void kernel_main(void)
@@ -24,7 +23,11 @@ extern "C" void kernel_main(void)
     init_cpu();
     ///Shift numbers 0x2A (42) and 0x36(54) caps number 0x3A(58)
     /* Initialize terminal interface */
-
+    while (true)
+    {
+        /* code */
+    }
+    
     //func write
     //func read
 }
