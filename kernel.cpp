@@ -14,9 +14,12 @@ extern "C" void init_cpu();
 extern "C" void __interrupt_handler(uint32_t id)
 {
     //cod = keyboard.attBuffer();
-    terminal_control(1,(char*) id), 7, 6);
+    if(id == 31){
+        cod = keyboard.attBuffer();
+        terminal_control(cod,keyboard.buffer, keyboard.lenBuffer, keyboard.prevLenBuffer);
+    } 
 }
-}
+
 
 extern "C" void kernel_main(void)
 {
