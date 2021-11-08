@@ -14,9 +14,8 @@ extern "C" void init_cpu();
 extern "C" void __interrupt_handler(uint32_t id)
 {
     //cod = keyboard.attBuffer();
-    if(id == 32){
+    if(id == 33){
         cod = keyboard.attBuffer();
-    }else if(id == 33){
         terminal_control(cod,keyboard.buffer, keyboard.lenBuffer, keyboard.prevLenBuffer);
     }
 }
